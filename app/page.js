@@ -160,7 +160,7 @@ export default function Home() {
               <img
                 src={video.thumbnail}
                 alt={video.title}
-                className="w-[60%] mx-auto h-[210px] object-cover"
+                className="w-[75%] mx-auto h-[210px] object-cover"
               />
               <p className="mt-2 text-sm text-center text-[#0e730e] font-bold">
                 {video.title}
