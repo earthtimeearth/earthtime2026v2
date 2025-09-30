@@ -14,14 +14,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full">
       <head>
+        {/* Let content extend into iOS safe areas */}
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        <meta name="theme-color" content="#ff892b" />
-        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#ff892b" />
+        {/* Make browser chrome dark so video shows through nicely */}
+        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
 
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-full bg-[#ff892b]`}>
-        {/* Site-wide background video (behind everything) */}
+      {/* NOTE: bg-black so the tiny sliver behind the video (if any) isn't white */}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-full bg-black`}>
+        {/* Site-wide background video (covers the whole page, incl. safe areas) */}
         <video
           autoPlay
           loop
@@ -35,7 +38,7 @@ export default function RootLayout({ children }) {
           <source src="/videos/background_multi_1.mp4" type="video/mp4" />
         </video>
 
-        {/* All page content above the video */}
+        {/* Page content above video */}
         <div className="relative z-10">{children}</div>
       </body>
     </html>
