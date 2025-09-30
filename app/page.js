@@ -1,106 +1,34 @@
-'use client';
+@import "tailwindcss";
 
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Marquee from "react-fast-marquee";
-
-const videos = [
-  { title: "who do you wanna be", thumbnail: "/thumbnails/whodoyouwannabe.png", url: "https://www.youtube.com/watch?v=f403q9IA-ek" },
-  { title: "save it for someone who cares (live)", thumbnail: "/thumbnails/saveitforsomeonewhocares.png", url: "https://www.youtube.com/watch?v=2qGzGRb7U8I" },
-  { title: "warm in here", thumbnail: "/thumbnails/warminhere.png", url: "https://www.youtube.com/watch?v=O8vR1YT7LeQ" },
-  { title: "saturday night", thumbnail: "/thumbnails/saturdaynight.png", url: "https://www.youtube.com/watch?v=JETMX31zbhQ" },
-  { title: "sneaking out", thumbnail: "/thumbnails/sneakingout.png", url: "https://www.youtube.com/watch?v=xoLmtqo6MWA" },
-];
-
-export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  return (
-    <main className="min-h-screen text-[#0e730e] font-sans relative overflow-x-hidden">
-      {/* Solid ORANGE top bar covering iOS safe area */}
-      <div
-        className="fixed top-0 left-0 right-0 z-50 bg-[#ff892b]"
-        style={{ paddingTop: "env(safe-area-inset-top)" }}
-      >
-        <Marquee
-          gradient={false}
-          speed={40}
-          pauseOnHover={false}
-          loop={0}
-          className="text-[#0e730e] text-lg font-bold uppercase py-2"
-        >
-          {Array(3)
-            .fill([
-              "NEW SINGLE ",
-              <a
-                key="who"
-                href="https://lnk.dmsmusic.co/earthtimespeelburglauriejamesross_whodoyouwannabe"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#2e9dd6] underline"
-              >
-                WHO DO YOU WANNA BE
-              </a>,
-            ])
-            .flat()
-            .map((item, i) => (
-              <span key={i} className="mx-6 whitespace-nowrap">{item}</span>
-            ))}
-        </Marquee>
-      </div>
-
-      {/* Menu button */}
-      {!menuOpen && (
-        <div className="fixed top-[45px] right-4 z-50">
-          <Button variant="ghost" size="icon" onClick={() => setMenuOpen(true)} className="hover:bg-transparent focus:outline-none focus:ring-0">
-            <Menu className="text-[#0e730e]" />
-          </Button>
-        </div>
-      )}
-
-      {/* Transparent header so video shows */}
-      <section className="fixed top-[20px] left-0 right-0 text-center z-40 pt-10 pb-6 px-4">
-        <a href="https://www.instagram.com/earthtime.earth/" target="_blank" rel="noopener noreferrer" className="block">
-          <img src="/earthtimelogo.png" alt="Earth Time logo" className="w-[300px] mb-3 sm:w-[250px] md:w-[300px] lg:w-[350px] mx-auto" />
-        </a>
-      </section>
-
-      {/* Mobile menu (solid orange overlay) */}
-      {menuOpen && (
-        <div className="fixed top-0 left-0 w-full h-[250px] bg-[#ff892b] z-50 flex flex-col items-center justify-center text-[#0e730e] font-bold space-y-2">
-          <div className="absolute top-4 right-4">
-            <Button variant="ghost" size="icon" onClick={() => setMenuOpen(false)} className="hover:bg-transparent focus:outline-none focus:ring-0">
-              <X className="text-[#0e730e]" />
-            </Button>
-          </div>
-          <a href="mailto:earthtimelove@gmail.com?subject=hey%20what's%20up" className="block py-2 text-center text-[#2e9dd6]">contact</a>
-          <a href="https://www.instagram.com/earthtime.earth/" target="_blank" rel="noopener noreferrer" className="block py-2 text-center text-[#2e9dd6]">insta</a>
-          <a href="https://www.youtube.com/@earthtimeearth" target="_blank" rel="noopener noreferrer" className="block py-2 text-center text-[#2e9dd6]">youtube</a>
-        </div>
-      )}
-
-      {/* Thumbnails → YouTube */}
-      <section className="p-8 pt-[250px]" id="work">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-6 mx-auto px-4 sm:px-8 lg:px-32 justify-items-center">
-          {videos.map((video, index) => (
-            <a key={index} href={video.url} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-              <div className="cursor-pointer">
-                <img src={video.thumbnail} alt={video.title} className="w-[75%] mx-auto h-[210px] object-cover" />
-                <p className="mt-2 text-sm text-center text-[#0e730e] font-bold">{video.title}</p>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* Footer is transparent; bottom orange bar is injected from layout.js */}
-      <footer id="contact" className="p-8 text-center text-sm">
-        <div className="flex justify-center space-x-4">
-          <a href="https://www.instagram.com/earthtime.earth/" target="_blank" rel="noopener noreferrer" className="underline font-bold text-[#2e9dd6]">insta</a>
-          <a href="https://www.youtube.com/@earthtimeearth" target="_blank" rel="noopener noreferrer" className="underline font-bold text-[#2e9dd6]">youtube</a>
-        </div>
-      </footer>
-    </main>
-  );
+:root {
+  --background: #ff892b;  /* brand orange fallback */
+  --foreground: #171717;
 }
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ff892b;   /* keep orange for consistency */
+    --foreground: #ededed;
+  }
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #ff892b; /* behind video & for browser chrome */
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  overscroll-behavior: none;
+}
+
+* { box-sizing: border-box; }
