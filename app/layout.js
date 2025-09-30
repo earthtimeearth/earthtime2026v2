@@ -15,13 +15,15 @@ export default function RootLayout({ children }) {
     <html lang="en" className="h-full">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        {/* Keep iOS/Android browser chrome orange */}
         <meta name="theme-color" content="#ff892b" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#ff892b" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </head>
 
+      {/* Orange fallback behind the video */}
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-full bg-[#ff892b]`}>
-        {/* Site-wide background video (behind everything) */}
+        {/* Background video (behind everything) */}
         <video
           autoPlay
           loop
@@ -35,8 +37,14 @@ export default function RootLayout({ children }) {
           <source src="/videos/background_multi_1.mp4" type="video/mp4" />
         </video>
 
-        {/* All page content above the video */}
+        {/* Page content above video */}
         <div className="relative z-10">{children}</div>
+
+        {/* Solid orange bottom bar (safe-area painter) */}
+        <div
+          className="fixed left-0 right-0 bottom-0 z-40 bg-[#ff892b] pointer-events-none"
+          style={{ height: "calc(env(safe-area-inset-bottom) + 12px)" }}
+        />
       </body>
     </html>
   );
