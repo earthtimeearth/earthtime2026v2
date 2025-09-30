@@ -20,11 +20,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         {/* Browser chrome color (iOS Safari + Android Chrome) */}
         <meta name="theme-color" content="#ff892b" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#ff892b" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-full bg-[#ff892b]`}>
         {/* Site-wide background video (behind everything) */}
