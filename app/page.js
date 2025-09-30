@@ -43,31 +43,40 @@ export default function Home() {
 
   return (
     <main className="min-h-screen text-[#0e730e] font-sans relative overflow-x-hidden">
-      {/* Marquee (transparent so video shows behind) */}
-      <div className="fixed top-0 left-0 right-0 z-50">
-        <Marquee
-          gradient={false}
-          speed={40}
-          pauseOnHover={false}
-          loop={0}
-          className="bg-transparent text-[#0e730e] text-lg font-bold uppercase py-2"
+ {/* Top bar that also paints the iOS safe-area */}
+<div
+  className="fixed top-0 left-0 right-0 z-50 bg-[#ff892b]"
+  style={{ paddingTop: "env(safe-area-inset-top)" }}
+>
+  <Marquee
+    gradient={false}
+    speed={40}
+    pauseOnHover={false}
+    loop={0}
+    className="text-[#0e730e] text-lg font-bold uppercase py-2"
+  >
+    {Array(3)
+      .fill([
+        "NEW SINGLE ",
+        <a
+          key="who"
+          href="https://lnk.dmsmusic.co/earthtimespeelburglauriejamesross_whodoyouwannabe"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#2e9dd6] underline"
         >
-          {Array(3).fill([
-            "NEW SINGLE ",
-            <a
-              key="who"
-              href="https://lnk.dmsmusic.co/earthtimespeelburglauriejamesross_whodoyouwannabe"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#2e9dd6] underline"
-            >
-              WHO DO YOU WANNA BE
-            </a>,
-          ]).flat().map((item, i) => (
-            <span key={i} className="mx-6 whitespace-nowrap">{item}</span>
-          ))}
-        </Marquee>
-      </div>
+          WHO DO YOU WANNA BE
+        </a>,
+      ])
+      .flat()
+      .map((item, i) => (
+        <span key={i} className="mx-6 whitespace-nowrap">
+          {item}
+        </span>
+      ))}
+  </Marquee>
+</div>
+
 
       {/* Menu button */}
       {!menuOpen && (
