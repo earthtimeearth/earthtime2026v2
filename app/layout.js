@@ -14,17 +14,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full">
       <head>
-        {/* Let content extend into iOS safe areas */}
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        {/* Make browser chrome dark so video shows through nicely */}
-        <meta name="theme-color" content="#000000" />
-        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
+        <meta name="theme-color" content="#ff892b" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#ff892b" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
 
-      {/* NOTE: bg-black so the tiny sliver behind the video (if any) isn't white */}
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-full bg-black`}>
-        {/* Site-wide background video (covers the whole page, incl. safe areas) */}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-full bg-[#ff892b]`}>
+        {/* Site-wide background video (behind everything) */}
         <video
           autoPlay
           loop
@@ -34,11 +31,11 @@ export default function RootLayout({ children }) {
           aria-hidden="true"
           className="pointer-events-none select-none fixed inset-0 w-full h-full object-cover z-0"
         >
-          <source src="/videos/background_orange_1.webm" type="video/webm" />
-          <source src="/videos/background_orange_1.mp4" type="video/mp4" />
+          <source src="/videos/background_multi_1.webm" type="video/webm" />
+          <source src="/videos/background_multi_1.mp4" type="video/mp4" />
         </video>
 
-        {/* Page content above video */}
+        {/* All page content above the video */}
         <div className="relative z-10">{children}</div>
       </body>
     </html>
