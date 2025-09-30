@@ -34,8 +34,8 @@ export default function RootLayout({ children }) {
           aria-hidden="true"
           className="pointer-events-none select-none fixed inset-0 w-full h-full object-cover z-0"
         >
-          <source src="/videos/background_orange_1.webm" type="video/webm" />
-          <source src="/videos/background_orange_1.mp4" type="video/mp4" />
+          <source src="/videos/background_multi_1.webm" type="video/webm" />
+          <source src="/videos/background_multi_1.mp4" type="video/mp4" />
         </video>
 
         {/* Page content above video */}
