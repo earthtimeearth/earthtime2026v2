@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
+/* App theme tokens */
 :root {
-  --background: #ff892b;   /* brand orange as default background */
-  --foreground: #171717;   /* dark text */
+  --background: #000000;   /* dark fallback behind video */
+  --foreground: #171717;
 }
 
 @theme inline {
@@ -14,24 +15,25 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #000000;
     --foreground: #ededed;
   }
 }
 
-/* ✅ Make background fill the whole screen and remove unwanted spacing */
+/* Fill the screen, avoid white gaps, and keep a dark fallback behind the video */
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
 
-  /* Fallback color — visible behind video opacity or if video fails */
-  background-color: #ff892b;
-
+  background-color: #000000; /* important for iOS bars + behind video */
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   overscroll-behavior: none;
 }
+
+/* (optional) box sizing reset */
+* { box-sizing: border-box; }
