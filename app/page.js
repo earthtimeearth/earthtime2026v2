@@ -43,39 +43,40 @@ export default function Home() {
 
   return (
     <main className="min-h-screen text-[#0e730e] font-sans relative overflow-x-hidden">
-      {/* Top bar that paints the iOS safe-area, but stays transparent so video shows */}
-      <div
-        className="fixed top-0 left-0 right-0 z-50"
-        style={{ paddingTop: "env(safe-area-inset-top)" }}
-      >
-        <Marquee
-          gradient={false}
-          speed={40}
-          pauseOnHover={false}
-          loop={0}
-          className="bg-transparent text-[#0e730e] text-lg font-bold uppercase py-2"
+ {/* Top bar that also paints the iOS safe-area */}
+<div
+  className="fixed top-0 left-0 right-0 z-50 bg-[#ff892b]"
+  style={{ paddingTop: "env(safe-area-inset-top)" }}
+>
+  <Marquee
+    gradient={false}
+    speed={40}
+    pauseOnHover={false}
+    loop={0}
+    className="text-[#0e730e] text-lg font-bold uppercase py-2"
+  >
+    {Array(3)
+      .fill([
+        "NEW SINGLE ",
+        <a
+          key="who"
+          href="https://lnk.dmsmusic.co/earthtimespeelburglauriejamesross_whodoyouwannabe"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#2e9dd6] underline"
         >
-          {Array(3)
-            .fill([
-              "NEW SINGLE ",
-              <a
-                key="who"
-                href="https://lnk.dmsmusic.co/earthtimespeelburglauriejamesross_whodoyouwannabe"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#2e9dd6] underline"
-              >
-                WHO DO YOU WANNA BE
-              </a>,
-            ])
-            .flat()
-            .map((item, i) => (
-              <span key={i} className="mx-6 whitespace-nowrap">
-                {item}
-              </span>
-            ))}
-        </Marquee>
-      </div>
+          WHO DO YOU WANNA BE
+        </a>,
+      ])
+      .flat()
+      .map((item, i) => (
+        <span key={i} className="mx-6 whitespace-nowrap">
+          {item}
+        </span>
+      ))}
+  </Marquee>
+</div>
+
 
       {/* Menu button */}
       {!menuOpen && (
@@ -91,7 +92,7 @@ export default function Home() {
         </div>
       )}
 
-      {/* Header (transparent so video shows) */}
+      {/* Header (transparent) */}
       <section className="fixed top-[20px] left-0 right-0 text-center z-40 pt-10 pb-6 px-4">
         <a
           href="https://www.instagram.com/earthtime.earth/"
@@ -107,7 +108,7 @@ export default function Home() {
         </a>
       </section>
 
-      {/* Mobile menu — keep solid orange for readability */}
+      {/* Mobile menu (keep solid orange for readability) */}
       {menuOpen && (
         <div className="fixed top-0 left-0 w-full h-[250px] bg-[#ff892b] z-50 flex flex-col items-center justify-center text-[#0e730e] font-bold space-y-2">
           <div className="absolute top-4 right-4">
@@ -146,7 +147,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer (transparent so video shows) */}
+      {/* Footer (transparent) */}
       <footer id="contact" className="p-8 text-center text-sm">
         <div className="flex justify-center space-x-4">
           <a href="https://www.instagram.com/earthtime.earth/" target="_blank" rel="noopener noreferrer" className="underline font-bold text-[#2e9dd6]">insta</a>
