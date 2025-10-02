@@ -152,6 +152,7 @@ export default function Home() {
         <div className="flex justify-center space-x-4">
           <a href="https://www.instagram.com/earthtime.earth/" target="_blank" rel="noopener noreferrer" className="underline font-bold text-[#2e9dd6]">insta</a>
           <a href="https://www.youtube.com/@earthtimeearth" target="_blank" rel="noopener noreferrer" className="underline font-bold text-[#2e9dd6]">youtube</a>
+          <a href="https://earthtimeearth.bandcamp.com/" target="_blank" rel="noopener noreferrer" className="underline font-bold text-[#2e9dd6]">bandcamp</a>
         </div>
       </footer>
     </main>
